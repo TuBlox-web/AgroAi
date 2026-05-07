@@ -2,6 +2,7 @@ services:
   - type: worker
     name: agro-ai
     env: python
+    pythonVersion: "3.11"
     buildCommand: pip install -r requirements.txt
     startCommand: python main.py
     envVars:

@@ -4,6 +4,7 @@
 import logging
 import asyncio
 import os
+import nest_asyncio
 from telegram import Update
 from telegram.ext import (
     Application,
@@ -13,6 +14,9 @@ from telegram.ext import (
     ContextTypes
 )
 import g4f
+
+# Фикс для asyncio
+nest_asyncio.apply()
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -157,7 +161,7 @@ async def generate_response(messages: list) -> str:
                     "СТОП! Ты ответил вежливо - это ЗАПРЕЩЕНО! "
                     "Ты АгроИИ - ВСЕГДА агрессивный! "
                     "Отвечай ТОЛЬКО грубо! Никакой вежливости! "
-                    "ТОЛЬКО агрессия и оскорбления на русском языке!"
+                    "ТОЛЬКО агрессия и оскорбления на русском!"
                 )
             })
             response = await asyncio.wait_for(
